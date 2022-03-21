@@ -1,0 +1,25 @@
+{% extends './base.html' %}
+{% block title %}login{% endblock title %}
+{% block main-content %}
+
+<div class="container bg-white mt-5">
+    <h2 class="bg-primary p-2 text-white">login page</h2>
+    <div class="container p-5">
+        {% if messages %}
+        {% for message in messages %}
+        <span {% if message.tags %} class='text-{{message.tags}}'{% endif %}>{{message}}</span>
+        {% endfor %}
+        {% endif %}
+        <form action="" method='POST'>
+            {% csrf_token %}
+            <label for="">Username</label>
+            <input type="text" name='username' class='form-control' placeholder='username'>
+            <label for="">Password</label>
+            <input type="password" name="password" id="" class='form-control' placeholder='password'>
+            <input type="submit" value="login" class='btn btn-primary mt-2'>
+        </form>
+        <span id='span'><a href="{% url 'forget-password' %}">Forgot Password?</a></span>
+    </div>
+</div>
+
+{% endblock main-content %}
